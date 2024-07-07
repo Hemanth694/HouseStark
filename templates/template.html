@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Customer Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Know Your Customers</h1>
+    <form method="post">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="emailaddress">Email Address</label>
+                <input type="text" class="form-control" id="emailaddress" name="emailaddress">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="firstname">First Name</label>
+                <input type="text" class="form-control" id="firstname" name="firstname">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="customerkey">Customer Key</label>
+                <input type="text" class="form-control" id="customerkey" name="customerkey">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search!</button>
+    </form>
+
+    <!-- Results Section -->
+    <h2 class="mt-5">Results</h2>
+    {% if customers %}
+        <div class="card-deck">
+            {% for customer in customers %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Customer Details</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Customer Key:</strong> {{ customer[0] }}</li>
+                            <li class="list-group-item"><strong>Geography Key:</strong> {{ customer[1] }}</li>
+                            <li class="list-group-item"><strong>Customer Alternate Key:</strong> {{ customer[2] }}</li>
+                            <li class="list-group-item"><strong>Title:</strong> {{ customer[3] }}</li>
+                            <li class="list-group-item"><strong>First Name:</strong> {{ customer[4] }}</li>
+                            <li class="list-group-item"><strong>Middle Name:</strong> {{ customer[5] }}</li>
+                            <li class="list-group-item"><strong>Last Name:</strong> {{ customer[6] }}</li>
+                            <li class="list-group-item"><strong>Name Style:</strong> {{ customer[7] }}</li>
+                            <li class="list-group-item"><strong>Birth Date:</strong> {{ customer[8] }}</li>
+                            <li class="list-group-item"><strong>Marital Status:</strong> {{ customer[9] }}</li>
+                            <li class="list-group-item"><strong>Suffix:</strong> {{ customer[10] }}</li>
+                            <li class="list-group-item"><strong>Gender:</strong> {{ customer[11] }}</li>
+                            <li class="list-group-item"><strong>Email Address:</strong> {{ customer[12] }}</li>
+                            <li class="list-group-item"><strong>Yearly Income:</strong> {{ customer[13] }}</li>
+                            <li class="list-group-item"><strong>Total Income:</strong> {{ customer[14] }}</li>
+                            <li class="list-group-item"><strong>Total Children:</strong> {{ customer[15] }}</li>
+                            <li class="list-group-item"><strong>Number of Children at Home:</strong> {{ customer[16] }}</li>
+                            <li class="list-group-item"><strong>English Education:</strong> {{ customer[17] }}</li>
+                            <li class="list-group-item"><strong>Spanish Education:</strong> {{ customer[18] }}</li>
+                            <li class="list-group-item"><strong>French Education:</strong> {{ customer[19] }}</li>
+                            <li class="list-group-item"><strong>English Occupation:</strong> {{ customer[20] }}</li>
+                            <li class="list-group-item"><strong>Spanish Occupation:</strong> {{ customer[21] }}</li>
+                            <li class="list-group-item"><strong>French Occupation:</strong> {{ customer[22] }}</li>
+                            <li class="list-group-item"><strong>House Owner Flag:</strong> {{ customer[23] }}</li>
+                            <li class="list-group-item"><strong>Number of Cars Owned:</strong> {{ customer[24] }}</li>
+                            <li class="list-group-item"><strong>Address Line 1:</strong> {{ customer[25] }}</li>
+                            <li class="list-group-item"><strong>Address Line 2:</strong> {{ customer[26] }}</li>
+                            <li class="list-group-item"><strong>Phone:</strong> {{ customer[27] }}</li>
+                            <li class="list-group-item"><strong>Date First Purchase:</strong> {{ customer[28] }}</li>
+                            <li class="list-group-item"><strong>Commute Distance:</strong> {{ customer[29] }}</li>
+                        </ul>
+                        <a href="/edit/{{ customer[0] }}" class="btn btn-primary mt-3">Edit</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            No customers found
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
